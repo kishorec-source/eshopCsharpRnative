@@ -4,7 +4,9 @@ import { View, StyleSheet } from 'react-native';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 
-const PageContainer = ({ children }) => {
+import { ReactNode } from 'react';
+
+const PageContainer = ({ children }: { children: ReactNode }) => {
   return (
     <View style={styles.container}>
       <Header />

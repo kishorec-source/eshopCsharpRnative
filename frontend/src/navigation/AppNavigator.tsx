@@ -5,7 +5,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from '../views/HomePage';
 import CartPage from '../views/CartPage';
 
-const Stack = createStackNavigator();
+// Define the type for your routes
+export type RootStackParamList = {
+  Home: undefined;
+  Cart: undefined;
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
   return (

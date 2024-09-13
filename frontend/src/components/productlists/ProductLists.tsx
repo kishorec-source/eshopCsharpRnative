@@ -3,7 +3,18 @@ import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import ProductCard from '../productcard/ProductCard';
 
-const ProductLists = ({ productListData }) => {
+interface Product {
+  id: number;
+  image: string;
+  name: string;
+  price: number;
+}
+
+interface ProductListsProps {
+  productListData: Product[];
+}
+
+const ProductLists: React.FC<ProductListsProps> = ({ productListData }) => {
   return (
     <View style={styles.container}>
       <FlatList

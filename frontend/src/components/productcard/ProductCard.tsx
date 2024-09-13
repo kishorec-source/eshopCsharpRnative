@@ -2,7 +2,17 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-const ProductCard = ({ product }) => {
+type Product = {
+  name: string;
+  price: number;
+  image: string;
+};
+
+interface ProductCardProps {
+  product: Product;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product }: ProductCardProps) => {
   return (
     <View style={styles.card}>
       <Image style={styles.image} source={{ uri: product.image }} />

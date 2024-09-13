@@ -3,7 +3,7 @@ import { PRODUCTS_ACTION_TYPES } from "./products.actiontypes";
 
 // action to start the async api call for productlists data
 export const fetchProductsStart = () =>
-  createAction(PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_START);
+  createAction(PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_START, null);
 
 // action for success of productlists data
 export const fetchProductsSuccess = (productsLists: any) =>

@@ -1,14 +1,14 @@
 // src/components/header/Header.tsx
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { useAppSelector } from '../../store/hooks/hooks';
 import { selectCartCount } from '../../store/cart/cart.selector';
-
+import { RootStackParamList } from '../../navigation/AppNavigator'; // Import RootStackParamList
 
 const Header = () => {
   const cartCount = useAppSelector(selectCartCount);
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>(); // Use the typed navigation
 
   return (
     <View style={styles.header}>
