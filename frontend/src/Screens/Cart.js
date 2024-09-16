@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-const CartScreen = () => {
+const Cart = () => {
     const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
 
@@ -20,7 +20,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBasket, addItemToBasket } from './actions/basketActions';
 
-const CartScreen = ({ userId }) => {
+const Cart = ({ userId }) => {
     const dispatch = useDispatch();
     const basket = useSelector(state => state.basket.basket);
 

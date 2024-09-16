@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductDetails } from './api';
 
-const ProductDetailsScreen = ({ productId }) => {
+const ProductDetails = ({ productId }) => {
     const dispatch = useDispatch();
     const productDetails = useSelector(state => state.products.productDetails);
 
@@ -16,3 +16,5 @@ const ProductDetailsScreen = ({ productId }) => {
     // Render product details
   );
 };
+
+export default ProductDetails;

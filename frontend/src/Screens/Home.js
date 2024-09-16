@@ -8,6 +8,7 @@ import {
   View,
   Text,
   ScrollView,
+  Button,
 } from 'react-native';
 
 const Home = ({}) => {
@@ -23,22 +24,29 @@ const Home = ({}) => {
   }, [dispatch]);
 
   return (
-    <FlatList
-      contentContainerStyle={{flexGrow: 1}}
-      data={products}
-      keyExtractor={item => item.id.toString()}
-      renderItem={({item}) => (
-        <View style={styles.container}>
-          <Image source={{uri: item.image}} style={styles.image} />
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.price}>${item.price}</Text>
-          <Text style={styles.category}>Category: {item.category}</Text>
-          <Text style={styles.rating}>
-            Rating: {item.rating.rate} ({item.rating.count} reviews)
-          </Text>
-        </View>
-      )}
-    />
+    <>
+      <FlatList
+        contentContainerStyle={{flexGrow: 1}}
+        data={products}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({item}) => (
+          <View style={[styles.container, {borderColor: 'red', marginTop: 5}]}>
+            <Image source={{uri: item.image}} style={styles.image} />
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.price}>${item.price}</Text>
+            <Text style={styles.category}>Category: {item.category}</Text>
+            <Text style={styles.rating}>
+              Rating: {item.rating.rate} ({item.rating.count} reviews)
+            </Text>
+            <Button
+              style={styles.button}
+              title="add to cart"
+              onPress={() => console.log('Button pressed')}
+            />
+          </View>
+        )}
+      />
+    </>
   );
 };
 
@@ -52,6 +60,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 5,
+  },
+  button: {
+    backgroundColor: '#007bff',
+    padding: 10,
+    borderRadius: 20,
+    alignItems: 'center',
   },
   image: {
     width: '100%',
