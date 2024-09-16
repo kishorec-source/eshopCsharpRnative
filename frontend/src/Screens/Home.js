@@ -1,29 +1,44 @@
-import {useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchProducts} from '../services/api';
-import {Text} from 'react-native-svg';
-import {Image, StyleSheet, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+} from 'react-native';
 
-const Home = ({product}) => {
+const Home = ({}) => {
+  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     fetchProducts().then(data => {
+      setProducts(data);
       dispatch({type: 'SET_PRODUCTS', payload: data});
+      console.log(data);
     });
   }, [dispatch]);
 
   return (
-    <View style={styles.container}>
-      <Image source={{uri: product.image}} style={styles.image} />
-      <Text style={styles.title}>{product.title}</Text>
-      <Text style={styles.price}>${product.price}</Text>
-      <Text style={styles.description}>{product.description}</Text>
-      <Text style={styles.category}>Category: {product.category}</Text>
-      <Text style={styles.rating}>
-        Rating: {product.rating.rate} ({product.rating.count} reviews)
-      </Text>
-    </View>
+    <FlatList
+      contentContainerStyle={{flexGrow: 1}}
+      data={products}
+      keyExtractor={item => item.id.toString()}
+      renderItem={({item}) => (
+        <View style={styles.container}>
+          <Image source={{uri: item.image}} style={styles.image} />
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.price}>${item.price}</Text>
+          <Text style={styles.category}>Category: {item.category}</Text>
+          <Text style={styles.rating}>
+            Rating: {item.rating.rate} ({item.rating.count} reviews)
+          </Text>
+        </View>
+      )}
+    />
   );
 };
 
