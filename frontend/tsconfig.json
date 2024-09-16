@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
   },
   "extends": "@react-native/typescript-config/tsconfig.json"
 }
