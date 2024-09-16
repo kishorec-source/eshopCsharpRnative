@@ -10,6 +10,7 @@ import {
   ScrollView,
   Button,
 } from 'react-native';
+import Search from './Search';
 
 const Home = ({}) => {
   const [products, setProducts] = useState([]);
@@ -25,6 +26,7 @@ const Home = ({}) => {
 
   return (
     <>
+      <Search />
       <FlatList
         contentContainerStyle={{flexGrow: 1}}
         data={products}
