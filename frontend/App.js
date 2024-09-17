@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
-import Home from './src/Screens/Home';
 import logo from './src/assets/logo.png';
+import UserLogIn from './src/Screens/UserLogin';
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
           <Image style={styles.logo} source={logo} />
           <Text style={styles.title}>eShop</Text>
         </View>
-        <Home />
+        <UserLogIn />
       </View>
     </ScrollView>
   );

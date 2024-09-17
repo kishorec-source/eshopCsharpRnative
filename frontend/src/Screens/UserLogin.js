@@ -6,14 +6,21 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
+  Button,
 } from 'react-native';
+import Home from './Home';
 
 export const UserLogIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [redirect, setRedirect] = useState(false);
+
+  if (redirect) {
+    return <Home />;
+  }
 
   return (
-    <View style={Styles.login_wrapper}>
+    <View style={Styles.loginWrapper}>
       <View style={Styles.form}>
         <TextInput
           style={Styles.form_input}
@@ -30,11 +37,11 @@ export const UserLogIn = () => {
           secureTextEntry
           onChangeText={text => setPassword(text)}
         />
-        <TouchableOpacity onPress={() => {}}>
-          <View style={Styles.button}>
-            <Text style={Styles.button_label}>{'Sign in'}</Text>
-          </View>
-        </TouchableOpacity>
+        <Button
+          onPress={() => setRedirect(true)}
+          title="Sign In"
+          style={Styles.button}
+        />
       </View>
       <View style={Styles.login_social}>
         <View style={Styles.login_social_separator}>

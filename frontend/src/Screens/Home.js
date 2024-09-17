@@ -27,12 +27,10 @@ const Home = ({}) => {
 
   const handleAddToCart = product => {
     dispatch(addToCart({payload: product}));
-    console.log('product added to cart');
   };
 
   const handleAddToWishlist = product => {
     dispatch(addToWishlist({payload: product}));
-    console.log('product wishlist');
   };
 
   return (
