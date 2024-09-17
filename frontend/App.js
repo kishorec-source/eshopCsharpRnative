@@ -45,9 +45,14 @@ const App = () => {
         <MyTabs />
       </NavigationContainer> */}
       <View style={styles.container}>
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
           <Image style={styles.logo} source={logo} />
-          {/* <Text style={styles.title}>eShopOnMobileNative</Text> */}
+          <Text style={styles.title}>eShop</Text>
         </View>
         <Home />
       </View>
