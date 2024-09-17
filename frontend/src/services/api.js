@@ -3,7 +3,6 @@ export const fetchProducts = async () => {
   try {
     const response = await fetch('https://fakestoreapi.com/products');
     const data = await response.json();
-    // console.log(data.category); // Add this line to log the data
     return data;
   } catch (error) {
     return null;

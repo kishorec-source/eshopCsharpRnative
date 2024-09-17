@@ -20,7 +20,6 @@ const Home = ({}) => {
     fetchProducts().then(data => {
       setProducts(data);
       dispatch({type: 'SET_PRODUCTS', payload: data});
-      console.log(data);
     });
   }, [dispatch]);
 
