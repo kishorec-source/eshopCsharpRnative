@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchProducts} from '../services/api';
+import {addToCart} from '../store/cart/cart.actions';
+import {addToWishlist} from '../store/wishlist/wishlist.actions';
 import {
   FlatList,
   Image,
@@ -23,6 +25,16 @@ const Home = ({}) => {
     });
   }, [dispatch]);
 
+  const handleAddToCart = product => {
+    dispatch(addToCart({payload: product}));
+    console.log('product added to cart');
+  };
+
+  const handleAddToWishlist = product => {
+    dispatch(addToWishlist({payload: product}));
+    console.log('product wishlist');
+  };
+
   return (
     <>
       <Search />
@@ -39,11 +51,23 @@ const Home = ({}) => {
             <Text style={styles.rating}>
               Rating: {item.rating.rate} ({item.rating.count} reviews)
             </Text>
-            <Button
-              style={styles.button}
-              title="add to cart"
-              onPress={() => console.log('Button pressed')}
-            />
+            <View
+              style={{
+                flexDirection: 'row',
+                marginTop: 10,
+                justifyContent: 'space-between',
+              }}>
+              <Button
+                title="add to cart"
+                onPress={() => handleAddToCart(item)}
+                color="#841584"
+              />
+              <Button
+                onPress={() => handleAddToWishlist(item)}
+                title="Wishlist"
+                color="#af601a"
+              />
+            </View>
           </View>
         )}
       />
