@@ -10,20 +10,22 @@ export const fetchProducts = async () => {
 };
 
 export const fetchProductDetails = async productId => {
-  const response = await fetch(`https://api.example.com/products/${productId}`);
+  const response = await fetch(
+    `https://fakestoreapi.com/products/${productId}`,
+  );
   const data = await response.json();
   return data;
 };
 
 export const fetchBasket = async userId => {
-  const response = await fetch(`https://localhost:5001/api/Basket/${userId}`);
+  const response = await fetch(`https://fakestoreapi.com/products/${userId}`);
   const data = await response.json();
   return data;
 };
 
 export const addItemToBasket = async (userId, item) => {
   const response = await fetch(
-    `https://localhost:5001/api/Basket/${userId}/items`,
+    `https://fakestoreapi.com/products/${userId}/items`,
     {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -34,4 +36,26 @@ export const addItemToBasket = async (userId, item) => {
   return data;
 };
 
-// Similarly, create functions for updating and deleting basket items.
+export const updateBasketItem = async (userId, itemId, item) => {
+  const response = await fetch(
+    `https://fakestoreapi.com/products/${userId}/items/${itemId}`,
+    {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(item),
+    },
+  );
+  const data = await response.json();
+  return data;
+};
+
+export const deleteBasketItem = async (userId, itemId) => {
+  const response = await fetch(
+    `https://fakestoreapi.com/products/${userId}/items/${itemId}`,
+    {
+      method: 'DELETE',
+    },
+  );
+  const data = await response.json();
+  return data;
+};
