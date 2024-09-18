@@ -1,76 +1,86 @@
-import {View, Text, StyleSheet, TextInput, Alert} from 'react-native';
+import {View, Text, StyleSheet, TextInput} from 'react-native';
 import React, {useState} from 'react';
 import CustomButton from '../common/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 // import firestore from '@react-native-firebase/firestore';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const Login = () => {
+import uuid from 'react-native-uuid';
+const Signup = () => {
   const navigation = useNavigation();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [mobile, setMobile] = useState('');
   const [pass, setPass] = useState('');
-  // const loginUser = () => {
+  const [confirmPass, setConfirmPass] = useState('');
+  // const addUser = () => {
+  //   let uid = uuid.v4();
   //   firestore()
   //     .collection('Users')
-  //     // Filter results
-  //     .where('email', '==', email)
-  //     .get()
-  //     .then(querySnapshot => {
-  //       /* ... */
-  //       console.log(querySnapshot.doc[0]._data);
-  //       // if (querySnapshot.docs[0]._data.password == pass) {
-  //       //   gotonext();
-  //       // } else {
-  //       //   Alert.alert('Wrong Password');
-  //       // }
+  //     .doc(uid)
+  //     .set({
+  //       name: name,
+  //       email: email,
+  //       mobile: mobile,
+  //       password: pass,
+  //       userId: uid,
   //     })
-  //     .catch(error => {
-  //       // Alert.alert('No user Found');
-  //       console.log(error);
+  //     .then(() => {
+  //       console.log('User added!');
+  //       navigation.navigate('Login');
   //     });
   // };
-  const gotonext = async () => {
-    await AsyncStorage.setItem('IS_USER_LOGGED_IN', 'yes');
-    navigation.navigate('Main');
-  };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{'Login'}</Text>
-
+      <Text style={styles.title}>{'Sign up'}</Text>
+      <TextInput
+        placeholder="Enter Name"
+        style={styles.input}
+        value={name}
+        onChangeText={txt => setName(txt)}
+      />
       <TextInput
         placeholder="Enter Email"
         style={styles.input}
         value={email}
         onChangeText={txt => setEmail(txt)}
       />
-
+      <TextInput
+        placeholder="Enter Mobile"
+        style={styles.input}
+        value={mobile}
+        onChangeText={txt => setMobile(txt)}
+      />
       <TextInput
         placeholder="Enter password"
         style={styles.input}
         value={pass}
         onChangeText={txt => setPass(txt)}
       />
-
+      <TextInput
+        placeholder="Enter Confirm Password"
+        style={styles.input}
+        value={confirmPass}
+        onChangeText={txt => setConfirmPass(txt)}
+      />
       <CustomButton
         bg={'#E27800'}
-        title={'Login'}
+        title={'Sign up'}
         color={'#fff'}
         onClick={() => {
-          navigation.navigate('Main');
+          addUser();
         }}
       />
       <Text
         style={styles.loginText}
         onPress={() => {
-          navigation.navigate('Signup');
+          navigation.navigate('Login');
         }}>
-        {'Sign up'}
+        {'Login'}
       </Text>
     </View>
   );
 };
 
-export default Login;
+export default Signup;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
