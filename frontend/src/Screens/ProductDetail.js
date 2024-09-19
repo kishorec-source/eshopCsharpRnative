@@ -49,7 +49,6 @@ const ProductDetail = () => {
       <ScrollView>
         <Image source={{uri: route.params.data.image}} style={styles.banner} />
         <Text style={styles.title}>{route.params.data.title}</Text>
-        <Text style={styles.desc}>{route.params.data.description}</Text>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Text style={[styles.price, {color: '#000'}]}>{'Price:'}</Text>
           <Text style={styles.price}>{' $' + route.params.data.price}</Text>
@@ -73,6 +72,8 @@ const ProductDetail = () => {
             </TouchableOpacity>
           </View>
         </View>
+        <Text style={styles.desc}>{route.params.data.description}</Text>
+
         <TouchableOpacity
           style={styles.wishlistBtn}
           onPress={() => {
@@ -89,7 +90,7 @@ const ProductDetail = () => {
         </TouchableOpacity>
 
         <CustomButton
-          bg={'#FF9A0C'}
+          bg={'#48c9b0'}
           title={'Add To Cart'}
           color={'#fff'}
           onClick={() => {
@@ -137,40 +138,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   banner: {
+    marginTop: 40,
     width: '100%',
     height: 300,
     resizeMode: 'center',
   },
   title: {
     fontSize: 23,
-    color: '#000',
-    fontWeight: '600',
+    color: '#FA8072',
+    fontWeight: '400',
     marginLeft: 20,
     marginTop: 20,
   },
   desc: {
-    fontSize: 16,
-
+    fontSize: 18,
     marginLeft: 20,
     marginRight: 20,
-    marginTop: 10,
+    marginTop: 30,
   },
   price: {
     color: 'green',
-    marginLeft: 20,
+    marginLeft: 40,
     marginTop: 20,
     fontSize: 20,
-    fontWeight: '800',
+    fontWeight: '500',
   },
   wishlistBtn: {
     position: 'absolute',
     right: 20,
-    top: 100,
+    top: 380,
     backgroundColor: '#E2DFDF',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 50,
-    height: 50,
+    width: 70,
+    height: 70,
     borderRadius: 25,
   },
   icon: {
@@ -184,8 +185,9 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   btn: {
-    padding: 5,
+    marginTop: 10,
     width: 30,
+    backgroundColor: '#DFFF00',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 0.5,

@@ -41,7 +41,7 @@ const Search = () => {
               setSearch(txt);
               filterData(txt);
             }}
-            placeholder="Search items here..."
+            placeholder="Search eShop"
             style={styles.input}
           />
         </View>
@@ -122,16 +122,21 @@ const styles = StyleSheet.create({
   },
   input: {width: '80%', marginLeft: 10},
   productItem: {
-    width: Dimensions.get('window').width,
+    width: Dimensions.get('window').width - 20,
     height: 100,
     marginTop: 10,
     backgroundColor: '#fff',
     alignItems: 'center',
     flexDirection: 'row',
+    borderRadius: 10, // Added border radius
+    marginHorizontal: 10, // Added margin to center the item
+    overflow: 'hidden', // Ensures child elements respect the border radius
   },
   itemImage: {
     width: 100,
     height: 100,
+    borderTopLeftRadius: 10, // Added border radius to match parent
+    borderBottomLeftRadius: 10, // Added border radius to match parent
   },
   name: {
     fontSize: 18,

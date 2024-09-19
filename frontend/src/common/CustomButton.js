@@ -24,12 +24,12 @@ const CustomButton = ({bg, title, onClick, color}) => {
 export default CustomButton;
 const styles = StyleSheet.create({
   btn: {
-    width: Dimensions.get('window').width - 40,
+    width: Dimensions.get('window').width - 100,
     height: 53,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     marginTop: 30,
-    borderRadius: 10,
+    borderRadius: 30,
   },
 });

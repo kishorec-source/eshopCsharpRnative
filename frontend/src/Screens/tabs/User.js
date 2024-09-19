@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import React from 'react';
+
 import Header from '../../common/Header';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
@@ -12,14 +12,14 @@ const User = () => {
   };
   return (
     <View style={styles.container}>
-      <Header title={'Profile'} />
+      <Header title={'My Profile'} />
       <Image
         source={require('../../images/default_user.png')}
         style={styles.user}
       />
-      <Text style={styles.name}>{'Gaurav'}</Text>
+      <Text style={styles.name}>{'John Doe'}</Text>
       <Text style={[styles.name, {fontSize: 16, marginTop: 0}]}>
-        {'gaurav@gmail.com'}
+        {'john.doe@example.com'}
       </Text>
       <TouchableOpacity style={[styles.tab, {marginTop: 40}]}>
         <Text style={styles.txt}>Edit Profile</Text>
@@ -29,13 +29,19 @@ const User = () => {
         onPress={() => {
           navigation.navigate('Orders');
         }}>
-        <Text style={styles.txt}>Orders</Text>
+        <Text style={styles.txt}>My Orders</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.tab, {marginTop: 10}]}>
-        <Text style={styles.txt}>Address</Text>
+        <Text style={styles.txt}>Address | Delivery Location</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.tab, {marginTop: 10}]}>
-        <Text style={styles.txt}>Payment Methods</Text>
+        <Text style={styles.txt}>Payment | Saved Cards</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={[styles.tab, {marginTop: 10}]}>
+        <Text style={styles.txt}>Gift Cards | Coupons</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={[styles.tab, {marginTop: 10}]}>
+        <Text style={styles.txt}>Help Center | Support</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.tab, {marginTop: 10}]}
@@ -49,10 +55,14 @@ const User = () => {
 };
 
 export default User;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    borderColor: '#000', // Add border color
+    borderWidth: 1, // Add border width
+    borderRadius: 10, // Add border radius
   },
   user: {
     width: 100,
@@ -75,6 +85,9 @@ const styles = StyleSheet.create({
     borderBottomColor: '#DBDBDB',
     paddingLeft: 20,
     justifyContent: 'center',
+    borderColor: '#000', // Add border color
+    borderWidth: 1, // Add border width
+    borderRadius: 10, // Add border radius
   },
   txt: {
     color: '#000',

@@ -18,7 +18,7 @@ const Wishlist = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Header title={'Wishlist Items'} />
+      <Header title={'My Wishlist'} />
       <FlatList
         data={wishlistItems}
         renderItem={({item, index}) => {

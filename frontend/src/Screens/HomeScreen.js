@@ -12,7 +12,7 @@ import Header from '../common/Header';
 import Home from './tabs/Home';
 import Search from './tabs/Search';
 import Wishlist from './tabs/Wishlist';
-import Notification from './tabs/Notification';
+import Categories from './tabs/Categories';
 import User from './tabs/User';
 
 const HomeScreen = () => {
@@ -46,7 +46,7 @@ const HomeScreen = () => {
       ) : selectedTab == 2 ? (
         <Wishlist />
       ) : selectedTab == 3 ? (
-        <Notification />
+        <Categories />
       ) : (
         <User />
       )}
@@ -62,6 +62,20 @@ const HomeScreen = () => {
                 selectedTab == 0
                   ? require('../images/home_fill.png')
                   : require('../images/home.png')
+              }
+              style={styles.bottomTabIcon}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.bottomTab}
+            onPress={() => {
+              setSelectedTab(3);
+            }}>
+            <Image
+              source={
+                selectedTab == 3
+                  ? require('../images/noti_fill.png')
+                  : require('../images/menu.png')
               }
               style={styles.bottomTabIcon}
             />
@@ -90,20 +104,7 @@ const HomeScreen = () => {
               style={styles.bottomTabIcon}
             />
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.bottomTab}
-            onPress={() => {
-              setSelectedTab(3);
-            }}>
-            <Image
-              source={
-                selectedTab == 3
-                  ? require('../images/noti_fill.png')
-                  : require('../images/noti.png')
-              }
-              style={styles.bottomTabIcon}
-            />
-          </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.bottomTab}
             onPress={() => {
@@ -132,12 +133,15 @@ const styles = StyleSheet.create({
   bottomView: {
     position: 'absolute',
     bottom: 0,
-    width: '100%',
-    height: 70,
+    width: '95%',
+    height: 60,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#d1fcf3',
+    borderRadius: 20,
+    marginBottom: 5,
+    marginLeft: 10,
   },
   bottomTab: {
     width: '20%',
