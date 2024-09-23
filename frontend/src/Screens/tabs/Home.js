@@ -13,6 +13,12 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {addProducts} from '../../redux/slices/ProductsSlice';
 
+// add in-line comments to explain the code or for such functionalities
+// version control for each component/screen
+// impact on business process
+// accessibilities issues
+// const/string - from a single source of truth
+
 const Home = () => {
   const navigation = useNavigation();
   const [products, setProducts] = useState([]);
@@ -44,6 +50,19 @@ const Home = () => {
         }}
         isCart={true}
       />
+      {/* <FlatList
+        data={[
+          {id: '1', image: 'https://via.placeholder.com/300x150'},
+          {id: '2', image: 'https://via.placeholder.com/300x150'},
+          {id: '3', image: 'https://via.placeholder.com/300x150'},
+        ]}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={({item}) => (
+          <Image source={{uri: item.image}} style={styles.bannerImage} />
+        )}
+        keyExtractor={item => item.id}
+      /> */}
       <FlatList
         data={products}
         numColumns={2}
@@ -58,16 +77,22 @@ const Home = () => {
               <Image source={{uri: item.image}} style={styles.itemImage} />
               <View style={styles.itemDetails}>
                 <Text style={styles.name}>
-                  {item.title.length > 25
+                  {item.title?.length > 25
                     ? item.title.substring(0, 25) + '...'
                     : item.title}
                 </Text>
                 <Text style={styles.desc}>
-                  {item.description.length > 30
+                  {item.description?.length > 30
                     ? item.description.substring(0, 30) + '...'
                     : item.description}
                 </Text>
                 <Text style={styles.price}>{'$' + item.price}</Text>
+                {item.ratingImage && (
+                  <Image
+                    source={{uri: item.ratingImage}}
+                    style={styles.ratingImage}
+                  />
+                )}
               </View>
             </TouchableOpacity>
           );
@@ -84,6 +109,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+
   productItem: {
     width: Dimensions.get('window').width / 2 - 10,
     margin: 5,
@@ -122,5 +148,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     marginTop: 5,
+  },
+  ratingImage: {
+    width: 50,
+    height: 50,
+    marginTop: 10,
   },
 });

@@ -19,14 +19,14 @@ const Header = ({
   isCart,
 }) => {
   const cartItems = useSelector(state => state.cart);
-  console.log(cartItems);
+  // console.log(cartItems);
   const navigation = useNavigation();
   return (
     <View style={styles.header}>
       <TouchableOpacity
         style={styles.btn}
         onPress={() => {
-          onClickLeftIcon();
+          onClickLeftIcon ? onClickLeftIcon() : navigation.navigate('Home');
         }}>
         <Image source={leftIcon} style={styles.icon} />
       </TouchableOpacity>
@@ -67,8 +67,7 @@ const styles = StyleSheet.create({
   header: {
     width: width,
     height: 65,
-
-    backgroundColor: '#0786DAFD',
+    backgroundColor: '#f72869',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

@@ -258,7 +258,10 @@ const Checkout = () => {
           <Text style={styles.paymentMethdodsTxt}>Cash on Delivery</Text>
         </TouchableOpacity>
         <View style={styles.addressView}>
-          <Text style={styles.title}>Address</Text>
+          <Text style={styles.title}>Current Add.</Text>
+          <Text style={[styles.name, {fontSize: 16, marginTop: 30}]}>
+            {'123 Main St, City, Country'}
+          </Text>
           <Text
             style={[
               styles.title,
@@ -267,7 +270,7 @@ const Checkout = () => {
             onPress={() => {
               navigation.navigate('Addresses');
             }}>
-            Edit Address
+            Edit Add.
           </Text>
         </View>
         <Text

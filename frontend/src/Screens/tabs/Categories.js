@@ -36,12 +36,34 @@ const Categories = () => {
       <Header
         // leftIcon={require('../../images/logo.png')}
         rightIcon={require('../../images/cart.png')}
-        title={'Product Categories'}
+        title={'eShop Categories'}
         onClickLeftIcon={() => {
           navigation.openDrawer();
         }}
         isCart={true}
       />
+      <View style={styles.pillsContainer}>
+        <TouchableOpacity
+          style={styles.pill}
+          onPress={() => {
+            fetch('https://dummyapi.online/api/movies')
+              .then(res => res.json())
+              .then(json => {
+                const formattedMovies = json.map(item => ({
+                  ...item,
+                  qty: 1,
+                  image: item.poster, // Assuming you want to use the poster image
+                  ratingImage: item.ratingImage, // Assuming the API provides a rating image
+                }));
+                setProducts(formattedMovies);
+              });
+          }}>
+          <Text style={styles.pillText}>Movies</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.pill}>
+          <Text style={styles.pillText}>Grocery</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={products}
         numColumns={2}
@@ -56,11 +78,10 @@ const Categories = () => {
               <Image source={{uri: item.image}} style={styles.itemImage} />
               <View style={styles.textContainer}>
                 <Text style={styles.name}>
-                  {item.name.length > 25
+                  {item.name?.length > 25
                     ? item.name.substring(0, 25) + '...'
                     : item.name}
                 </Text>
-                <Text style={styles.desc}>{item.creationAt}</Text>
                 <Text style={styles.price}>{'Category ID: ' + item.id}</Text>
               </View>
             </TouchableOpacity>
@@ -75,6 +96,24 @@ const Categories = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  pillsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 10,
+    // width: '50%',
+  },
+  pill: {
+    backgroundColor: '#077a62',
+    borderRadius: 20,
+    paddingVertical: 17,
+    paddingHorizontal: 60,
+    marginHorizontal: 5,
+  },
+  pillText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '500',
   },
   productItem: {
     flex: 1,

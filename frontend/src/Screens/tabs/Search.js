@@ -76,12 +76,12 @@ const Search = () => {
                 <Image source={{uri: item.image}} style={styles.itemImage} />
                 <View>
                   <Text style={styles.name}>
-                    {item.title.length > 25
+                    {item.title?.length > 25
                       ? item.title.substring(0, 25) + '...'
                       : item.title}
                   </Text>
                   <Text style={styles.desc}>
-                    {item.description.length > 30
+                    {item.description?.length > 30
                       ? item.description.substring(0, 30) + '...'
                       : item.description}
                   </Text>
